@@ -6,6 +6,7 @@ import { BASEURL } from "../utils/constants";
 import { useNavigate } from "react-router-dom";
 
 const Login: React.FC = () => {
+  const [error, setError] = useState<string>("");
   const [emailId, setEmailId] = useState<string>("cp@gmail.com");
   const [password, setPassword] = useState<string>("Chanda@123");
   const dispatch = useDispatch();
@@ -24,7 +25,7 @@ const Login: React.FC = () => {
       dispatch(addUser(res.data));
       navigate("/feed");
     } catch (error) {
-      console.log("Something went wrong " + error);
+      setError("Login failed");
     }
   };
 
@@ -51,6 +52,7 @@ const Login: React.FC = () => {
               onChange={(e) => setPassword(e.target.value)}
             />
           </fieldset>
+          {error && <p className="text-red-500">{error}</p>}
           <div className="card-actions justify-center">
             <button className="btn btn-primary" onClick={handleLogin}>
               Login
