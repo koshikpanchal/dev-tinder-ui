@@ -4,9 +4,9 @@ export interface UserState {
   firstName: string;
   lastName: string;
   about: string;
-  skills: string;
-  age: string;
-  photoUrl: string;
+  skills?: string[];
+  age?: string;
+  photoUrl?: string;
   gender: string;
   emailId: string;
 }
